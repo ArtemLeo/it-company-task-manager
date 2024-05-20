@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Manage Your Projects in One Place</h1>
+  <p>Plan and manage all your team's tasks in one flexible platform.</p>
+  <h2>Dynamic content</h2>
+  <p>The Task manager has the following record counts:</p>
+  <ul>
+    <li><strong>Workers:</strong> {{ num_workers }}</li>
+    <li><strong>Positions:</strong> {{ num_positions }}</li>
+    <li><strong>TaskTypes:</strong> {{ num_task_types }}</li>
+  </ul>
+
+{% endblock %}
