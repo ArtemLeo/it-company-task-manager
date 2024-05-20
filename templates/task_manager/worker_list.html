@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Worker List
+    <a href="{% url 'task_manager:worker-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+
+  {% if worker_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Full name</th>
+        <th>Position</th>
+        <th>Username</th>
+      </tr>
+      {% for worker in worker_list %}
+        <tr>
+          <td>{{ worker.id }}</td>
+          <td>
+            <a href="{{ worker.get_absolute_url }}"
+            >{{ worker.get_full_name }} {% if user == worker %} (Me){% endif %}</a>
+          </td>
+          <td>{{ worker.position }}</td>
+          <td>{{ worker.username }}</td>
+        </tr>
+      {% endfor %}
+
+    </table>
+  {% else %}
+    <p>There are no workers yet.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <p>Are you sure tou want to delete the worker: {{ worker.get_full_name }}?</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete" class="btn btn-danger">
+    <a class="btn btn-primary" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+  </form>
+{% endblock %}
