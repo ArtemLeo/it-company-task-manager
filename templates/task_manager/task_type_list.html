@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Task Type List
+    <a href="{% url '#' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+
+  {% if task_type_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Number of tasks</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for task_type in task_type_list %}
+        <tr>
+          <td>
+            {{ task_type.id }}
+          </td>
+          <td>
+            {{ task_type.name }}
+          </td>
+          <td>
+            {{ task_type.tasks.count }}
+          </td>
+          <td>
+            <a href="{% url 'taxi:manufacturer-update' pk=manufacturer.id %}">
+              Update
+            </a>
+          </td>
+          <td>
+            <a style="color: red"
+               href="{% url 'taxi:manufacturer-delete' pk=manufacturer.id %}">
+              Delete
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+    <p>There are no task types yet.</p>
+  {% endif %}
+{% endblock %}
