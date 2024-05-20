@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <p>Are you sure tou want to delete the position: {{ position }}?</p>
+  <p><i>All Workers of this position type will be deleted!</i></p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete" class="btn btn-danger">
+    <a class="btn btn-primary" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+  </form>
+{% endblock %}
