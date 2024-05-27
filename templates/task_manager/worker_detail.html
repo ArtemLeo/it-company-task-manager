@@ -3,11 +3,11 @@
 {% block content %}
   <h1>
     {{ worker.position.name }} {{ worker.get_full_name }}
-    <a href="{% url 'task_manager:worker-delete' pk=driver.id %}" class="btn btn-danger link-to-page">
+    <a href="{% url 'task_manager:worker-delete' pk=worker.id %}" class="btn btn-danger link-to-page">
       Delete
     </a>
 
-    <a href="{% url 'task_manager:worker-update' pk=driver.id %}" class="btn btn-secondary link-to-page">
+    <a href="{% url 'task_manager:worker-update' pk=worker.id %}" class="btn btn-secondary link-to-page">
       Update worker's info
     </a>
   </h1>
