@@ -65,6 +65,11 @@ class TaskForm(forms.ModelForm):
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
+    deadline = forms.DateField(
+        widget=forms.SelectDateWidget(
+            empty_label=("Choose Year", "Choose Month", "Choose Day"),
+        )
+    )
 
     class Meta:
         model = Task
