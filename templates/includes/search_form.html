@@ -1,0 +1,8 @@
+{% load crispy_forms_filters %}
+{% load static %}
+<form class="form-inline" action="" method="get">
+  {% csrf_token %}
+  {{ search_form|crispy }}
+  <button class="btn btn-secondary search-label-icon" type="submit" value="submit">🔎</button>
+</form>
+<br>
