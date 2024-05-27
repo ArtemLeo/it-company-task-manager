@@ -1,0 +1,16 @@
+<ul class="sidebar-nav list-group">
+  {% if user.is_authenticated %}
+    <li class="list-group-item">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
+    <li class="list-group-item"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+  {% else %}
+    <li class="list-group-item"><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+  {% endif %}
+
+  <br>
+
+  <li class="list-group-item"><a href="{% url 'task_manager:index' %}">Home page</a></li>
+  <li class="list-group-item"><a href="{% url 'task_manager:task-list' %}">Tasks</a></li>
+  <li class="list-group-item"><a href="{% url 'task_manager:worker-list' %}">Workers</a></li>
+  <li class="list-group-item"><a href="{% url 'task_manager:position-list' %}">Position</a></li>
+  <li class="list-group-item"><a href="{% url 'task_manager:task-type-list' %}">Types of tasks</a></li>
+</ul>
