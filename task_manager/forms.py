@@ -21,6 +21,17 @@ class PositionForm(forms.ModelForm):
         fields = "__all__"
 
 
+class PositionSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name"}
+        )
+    )
+
+
 class WorkerCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Worker
