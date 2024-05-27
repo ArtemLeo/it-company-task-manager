@@ -98,6 +98,29 @@ class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy("task_manager:worker-detail")
 
 
-class DriverDeleteView(LoginRequiredMixin, generic.DeleteView):
+class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Worker
     success_url = reverse_lazy("task_manager:worker-list")
+
+    class TaskListView(LoginRequiredMixin, generic.ListView):
+        model = Task
+        paginate_by = 10
+        queryset = Task.objects.prefetch_related("assignees")
+
+    class TaskDetailView(LoginRequiredMixin, generic.DetailView):
+        model = Task
+        queryset = Task.objects.prefetch_related("assignees")
+
+    class TaskCreateView(LoginRequiredMixin, generic.CreateView):
+        model = Task
+        fields = "__all__"
+        success_url = reverse_lazy("task_manager:task-list")
+
+    class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
+        model = Task
+        fields = "__all__"
+        success_url = reverse_lazy("task_manager:task-list")
+
+    class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
+        model = Task
+        success_url = reverse_lazy("task_manager:task-list")
