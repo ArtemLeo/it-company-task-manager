@@ -29,7 +29,6 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "task_type_list"
     template_name = "task_manager/task_type_list.html"
     paginate_by = 10
-    queryset = TaskType.objects.select_related("tasks")
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(TaskTypeListView, self).get_context_data(**kwargs)
@@ -40,12 +39,13 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
+        queryset = TaskType.objects.select_related("tasks")
         form = TaskTypeSearchForm(self.request.GET)
         if form.is_valid():
-            return TaskType.objects.filter(
+            return queryset.filter(
                 name__icontains=form.cleaned_data["name"]
             )
-        return TaskType.objects.all()
+        return queryset
 
 
 class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
