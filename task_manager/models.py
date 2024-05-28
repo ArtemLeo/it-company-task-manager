@@ -31,10 +31,10 @@ class Worker(AbstractUser):
 
 class Task(models.Model):
     PRIORITY_CHOICES = (
-        (1, "Urgent"),
-        (2, "High-priority"),
-        (3, "Medium-priority"),
-        (4, "Low-priority")
+        ("Urgent", "Urgent"),
+        ("High-priority", "High-priority"),
+        ("Medium-priority", "Medium-priority"),
+        ("Low-priority", "Low-priority")
     )
 
     name = models.CharField(max_length=255)
@@ -46,7 +46,7 @@ class Task(models.Model):
     assignees = models.ManyToManyField(Worker, related_name="tasks")
 
     class Meta:
-        ordering = ["priority", ]
+        ordering = ["deadline", ]
 
     def __str__(self):
         return self.name
