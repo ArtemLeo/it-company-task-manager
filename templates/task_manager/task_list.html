@@ -1,46 +1,70 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
+
+{% block title %} Task List {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-  <h1>
-    Task List
-    <a href="{% url 'task_manager:task-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  {% include "includes/search_form.html" %}
-  
-  {% if task_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Priority</th>
-        <th>Description</th>
-        <th>Deadline</th>
-      </tr>
-
-      {% for task in task_list %}
-        <tr>
-          <td>
-            {{ task.id }}
-          </td>
-          <td>
-            <a href="{% url 'task_manager:task-detail' pk=task.id %}">{{ task.name }}</a>
-          </td>
-          <td>
-            {{ task.priority }}
-          </td>
-          <td>
-            {{ task.description }}
-          </td>
-          <td>
-            {{ task.deadline|date:"F j, Y" }}
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-
-  {% else %}
-    <p>There are no tasks yet.</p>
-  {% endif %}
+  {% include "includes/navigation-light.html" %}
+  <section class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h3>Task List
+            <a href="{% url 'task_manager:task-create' %}"
+               class="btn btn-outline-success link-to-page ms-3 mt-3">Create task</a>
+          </h3>
+        </div>
+        <div class="col-3 text-right">
+          {% include "includes/search_form.html" %}
+        </div>
+      </div>
+      <div class="row">
+        {% if task_list %}
+          {% for task in task_list %}
+            <div class="col-lg-3 col-sm-6 my-2">
+              <div class="card card-plain card-blog bg-gradient-faded-white">
+                <div class="card-body px-0 m-1 mx-3">
+                  {% if task.is_completed %}
+                    <p class="btn-outline-success">
+                      <i class="fas fa-check-double me-1"></i>Completed
+                    </p>
+                  {% endif %}
+                  <h5>
+                    <a href="{% url 'task_manager:task-detail' pk=task.id %}"
+                       class="text-dark font-weight-bold">{{ task.name }}</a>
+                  </h5>
+                  <p>
+                    {{ task.description|truncatewords:20 }}
+                  </p>
+                  {% if task.priority == "Urgent" %}
+                    <p><span class="badge btn-danger">Urgent</span></p>
+                  {% elif task.priority == "High-priority" %}
+                    <p><span class="badge btn-warning">High-priority</span></p>
+                  {% elif task.priority == "Medium-priority" %}
+                    <p><span class="badge btn-info">Medium-priority</span></p>
+                  {% elif task.priority == "Low-priority" %}
+                    <p><span class="badge btn-success">Low-priority</span></p>
+                  {% endif %}
+                  <p>
+                    <i class="fas fa-user-friends me-1"></i>Assignees:
+                    {% for worker in task.assignees.all %}
+                      <a href="{% url 'task_manager:worker-detail' pk=worker.id %}">
+                        {{ worker.get_full_name }}{% if not forloop.last %}, {% endif %}</a>
+                    {% endfor %}
+                  </p>
+                  <p>
+                    <i class="fas fa-calendar me-1"></i>Deadline: {{ task.deadline|date:"d M Y" }}
+                  </p>
+                  <a href="{% url 'task_manager:task-detail' pk=task.id %}" class="text-info icon-move-right">Details
+                    <i class="fas fa-arrow-right text-sm" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
 {% endblock %}
