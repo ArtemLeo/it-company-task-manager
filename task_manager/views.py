@@ -92,10 +92,6 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-class PositionDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Position
-
-
 class PositionCreateView(LoginRequiredMixin, generic.CreateView):
     model = Position
     form_class = PositionForm

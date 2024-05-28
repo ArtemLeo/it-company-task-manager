@@ -51,12 +51,6 @@ urlpatterns = [
         name="position-list",
     ),
     path(
-        "positions/<int:pk>/",
-        PositionDetailView.as_view(),
-        name="position-detail"
-    ),
-
-    path(
         "positions/create/",
         PositionCreateView.as_view(),
         name="position-create",
