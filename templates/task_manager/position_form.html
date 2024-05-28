@@ -1,12 +1,26 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
+
+{% block title %} {{ object|yesno:"Update,Create" }} task type {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
 {% load crispy_forms_filters %}
-
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} position</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-
-    <input type="submit" value="Submit" class="btn btn-primary">
-  </form>
+  {% include "includes/navigation-light.html" %}
+  <section class="py-3 min-height-600">
+    <div class="container w-50">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3 class="mt-3">{{ object|yesno:"Update,Create" }} position</h3>
+        </div>
+      </div>
+      <div class="row">
+        <form action="" method="post" novalidate>
+          {% csrf_token %}
+          {{ form|crispy }}
+          <input type="submit" value="Save" class="btn bg-gradient-primary btn-lg">
+        </form>
+      </div>
+    </div>
+  </section>
 {% endblock %}
