@@ -7,7 +7,6 @@ from .views import (
     TaskTypeUpdateView,
     TaskTypeDeleteView,
     PositionListView,
-    PositionDetailView,
     PositionCreateView,
     PositionUpdateView,
     PositionDeleteView,
