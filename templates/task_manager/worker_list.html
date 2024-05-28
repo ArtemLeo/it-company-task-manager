@@ -1,36 +1,51 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
+
+{% block title %} Task List {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-  <h1>
-    Worker List
-    <a href="{% url 'task_manager:worker-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  {% include "includes/search_form.html" %}
+  {% include "includes/navigation-light.html" %}
+  <section class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h3 class="mb-5">Workers
+            <a href="{% url 'task_manager:worker-create' %}"
+               class="btn btn-outline-success link-to-page ms-3 mt-3">Create worker</a>
+          </h3>
+        </div>
+        <div class="col-3">
+          {% include "includes/search_form.html" %}
+        </div>
+      </div>
 
-  {% if worker_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Full name</th>
-        <th>Position</th>
-        <th>Username</th>
-      </tr>
-      {% for worker in worker_list %}
-        <tr>
-          <td>{{ worker.id }}</td>
-          <td>
-            <a href="{% url 'task_manager:worker-detail' pk=worker.id %}"
-            >{{ worker.get_full_name }} {% if user == worker %}(Me){% endif %}</a>
-          </td>
-          <td>{{ worker.position }}</td>
-          <td>{{ worker.username }}</td>
-        </tr>
-      {% endfor %}
-
-    </table>
-  {% else %}
-    <p>There are no workers yet.</p>
-  {% endif %}
+      <div class="row">
+        {% if worker_list %}
+          <table class="table table-hover align-content-center">
+            <tr>
+              <th>Full name</th>
+              <th>Position</th>
+              <th>Username</th>
+              <th>Email</th>
+            </tr>
+            {% for worker in worker_list %}
+              <tr>
+                <td class="py-3">
+                  <a class="py-3" href="{% url 'task_manager:worker-detail' pk=worker.id %}"
+                  >{{ worker.get_full_name }} {% if user == worker %}(Me){% endif %}</a>
+                </td>
+                <td class="py-3">{{ worker.position.name }}</td>
+                <td class="py-3"><a class="py-3" href="{% url 'task_manager:worker-detail' pk=worker.id %}"
+                >{{ worker.username }}</a></td>
+                <td class="py-3">{{ worker.email }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+        {% else %}
+          <p>There are no workers yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
 {% endblock %}
