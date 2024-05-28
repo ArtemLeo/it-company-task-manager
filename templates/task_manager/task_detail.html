@@ -1,26 +1,53 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
+
+{% block title %} Task List {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-  <h1>
-    {{ task.name }}
-    <a href="{% url 'task_manager:task-delete' pk=task.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
+  {% include "includes/navigation-light.html" %}
+  <section class="py-3 min-height-600">
+    <div class="container w-75">
+      <div class="row">
+        <div class="col-lg-9">
+          <h2 class="mb-3 mt-3">{{ task.name }}</h2>
+        </div>
+        <div class="col-lg-3 mt-3 text-right">
+          <a href="{% url 'task_manager:task-update' pk=task.id %}" class="btn btn-outline-success">
+            <i class="fas fa-pen me-1"></i>Edit
+          </a>
+          <a href="{% url 'task_manager:task-delete' pk=task.id %}" class="btn btn-outline-danger">
+            <i class="fas fa-trash me-1"></i>Delete
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        {% if task.priority == "Urgent" %}
+          <p><span class="badge btn-danger">Urgent</span></p>
+        {% elif task.priority == "High-priority" %}
+          <p><span class="badge btn-warning">High-priority</span></p>
+        {% elif task.priority == "Medium-priority" %}
+          <p><span class="badge btn-info">Medium-priority</span></p>
+        {% elif task.priority == "Low-priority" %}
+          <p><span class="badge btn-success">Low-priority</span></p>
+        {% endif %}
+        <hr>
+        <p><i class="fas fa-clipboard me-1"></i>Description: {{ task.description }}</p>
+        <p><i class="fas fa-hourglass-half me-1"></i>Deadline: {{ task.deadline|date:"F j, Y" }}</p>
+        <p><i class="fas fa-user-friends me-1"></i>Assignees:</p>
+        {% for worker in task.assignees.all %}
+          <div class="col-lg-3 my-2">
+            <div class="card card-plain card-blog bg-gray-300">
+              <div class="card-body px-0 m-1 mx-3">
+                <a href="{% url 'task_manager:worker-detail' pk=worker.id %}"
+                ><h5 class="text-dark font-weight-bold"><i class="fas fa-user-circle me-1"></i>{{ worker.first_name }} {{ worker.last_name }}</h5></a>
+                <p><i class="fas fa-id-badge me-1"></i>Position: <b>{{ worker.position.name }}</b></p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
 
-    <a href="{% url 'task_manager:task-update' pk=task.id %}" class="btn btn-secondary link-to-page">
-      Update
-    </a>
-  </h1>
-  <p>Description: {{ task.description }}</p>
-  <p>Priority: {{ task.priority }}</p>
-  <p>Deadline: {{ task.deadline|date:"F j, Y" }}</p>
-  <h1>
-    Assignees:
-  </h1>
-  <hr>
-  <ul>
-    {% for worker in task.assignees.all %}
-      <li>{{ worker.position.name }} {{ worker.first_name }} {{ worker.last_name }}</li>
-    {% endfor %}
-  </ul>
+      </div>
+    </div>
+  </section>
 {% endblock %}
