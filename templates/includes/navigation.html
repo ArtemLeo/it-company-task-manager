@@ -1,0 +1,127 @@
+<div class="container position-sticky z-index-sticky top-0">
+  <div class="row">
+    <div class="col-12">
+      <nav
+          class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+        <div class="container-fluid">
+          <a class="navbar-brand font-weight-bolder ms-sm-3"
+             href="/" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+            <img src="{{ ASSETS_ROOT }}/img/logo.svg" alt="logo">
+            Task Manager
+          </a>
+          <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                  aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </span>
+          </button>
+          <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0" id="navigation">
+            <ul class="navbar-nav navbar-nav-hover ms-lg-12 ps-lg-5 w-100">
+              <li class="nav-item dropdown dropdown-hover mx-2">
+                <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
+                   id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                  Tasks
+                  <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+                </a>
+                <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3"
+                     aria-labelledby="dropdownMenuPages">
+                  <div class="d-none d-lg-block">
+                    <a href="{% url "task_manager:task-list" %}" class="dropdown-item border-radius-md">
+                      <i class="fa fas fa-thumbtack me-1"></i>
+                      All tasks
+                    </a>
+                    <a href="{% url "task_manager:task-type-list" %}" class="dropdown-item border-radius-md">
+                      <i class="fa fas fa-sticky-note me-1"></i>
+                      Task types
+                    </a>
+                    <a href="{% url "task_manager:task-create" %}" class="dropdown-item border-radius-md">
+                      <i class="fas fa-edit me-1"></i>
+                      Create task
+                    </a>
+                  </div>
+
+                  <div class="d-lg-none">
+                    <a href="{% url "task_manager:task-list" %}" class="dropdown-item border-radius-md">
+                      <i class="fa fas fa-thumbtack me-1"></i>
+                      All tasks
+                    </a>
+                    <a href="{% url "task_manager:task-type-list" %}" class="dropdown-item border-radius-md">
+                      <i class="fa fas fa-sticky-note me-1"></i>
+                      Task types
+                    </a>
+                    <a href="{% url "task_manager:task-create" %}" class="dropdown-item border-radius-md">
+                      <i class="fas fa-edit me-1"></i>
+                      Create task
+                    </a>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown dropdown-hover mx-2">
+                <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
+                   id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                  Workers
+                  <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+                </a>
+                <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3"
+                     aria-labelledby="dropdownMenuPages">
+                  <div class="d-none d-lg-block">
+                    <a href="{% url "task_manager:worker-list" %}" class="dropdown-item border-radius-md">
+                      <i class="fa fas fa-users me-1"></i>
+                      All workers
+                    </a>
+                    <a href="{% url "task_manager:position-list" %}" class="dropdown-item border-radius-md">
+                      <i class="fas fa-id-badge me-1"></i>
+                      Positions
+                    </a>
+                    <a href="{% url "task_manager:worker-create" %}" class="dropdown-item border-radius-md">
+                      <i class="fa fas fa-user-plus me-1"></i>
+                      Add new worker
+                    </a>
+                  </div>
+
+                  <div class="d-lg-none">
+                    <a href="{% url "task_manager:worker-list" %}" class="dropdown-item border-radius-md">
+                      <i class="fa fas fa-users me-1"></i>
+                      All workers
+                    </a>
+                    <a href="{% url "task_manager:position-list" %}" class="dropdown-item border-radius-md">
+                      <i class="fas fa-id-badge me-1"></i>
+                      Positions
+                    </a>
+                    <a href="{% url "task_manager:worker-create" %}" class="dropdown-item border-radius-md">
+                      <i class="fa ffas fa-user-plus me-1"></i>
+                      Add new worker
+                    </a>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-item ms-lg-auto">
+                <form action="{% url 'logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="logout-btn">
+                    <a class="nav-link nav-link-icon me-2" href="{% url 'logout' %}">
+                      <i class="fa fa-sign-out me-1"></i>
+                      <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip"
+                         data-bs-placement="bottom" title="Logout">Logout</p>
+                    </a>
+                  </button>
+                </form>
+              </li>
+              <li class="nav-item my-auto ms-3 ms-lg-0">
+                <a href="{% url 'task_manager:task-list' %}"
+                   target="_blank"
+                   class="btn btn-sm  bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">Get started</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+    </div>
+  </div>
+</div>
