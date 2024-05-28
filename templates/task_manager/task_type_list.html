@@ -1,51 +1,55 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
+
+{% block title %} Task Types {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-  <h1>
-    Task Type List
-    <a href="{% url 'task_manager:task-type-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  {% include "includes/search_form.html" %}
-  
-  {% if task_type_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Number of tasks</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
+  {% include "includes/navigation-light.html" %}
+  <section class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h3 class="mb-5">Task Types
+            <a href="{% url 'task_manager:task-type-create' %}"
+               class="btn btn-outline-success link-to-page ms-3 mt-3">Create type</a>
+          </h3>
+        </div>
+        <div class="col-3">
+          {% include "includes/search_form.html" %}
+        </div>
+      </div>
 
-      {% for task_type in task_type_list %}
-        <tr>
-          <td>
-            {{ task_type.id }}
-          </td>
-          <td>
-            {{ task_type.name }}
-          </td>
-          <td>
-            {{ task_type.tasks.count }}
-          </td>
-          <td>
-            <a href="{% url 'task_manager:task-type-update' pk=task_type.id %}">
-              Update
-            </a>
-          </td>
-          <td>
-            <a style="color: red"
-               href="{% url 'task_manager:task-type-delete' pk=task_type.id %}">
-              Delete
-            </a>
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
-
-  {% else %}
-    <p>There are no task types yet.</p>
-  {% endif %}
+      <div class="row">
+        {% if task_type_list %}
+          {% for task_type in task_type_list %}
+            <div class="col-lg-3 col-sm-6 my-2">
+              <div class="card card-plain card-blog bg-gradient-faded-white">
+                <div class="card-body px-0 m-1 mx-3">
+                  <h5 class="text-dark font-weight-bold">
+                    {{ task_type.name }}
+                  </h5>
+                  {% if task_type.tasks.all %}
+                    <p class="mb-0"><i class="fas fa-tasks me-1"></i>Tasks with this type: {{ task_type.tasks.count }}
+                    </p>
+                  {% else %}
+                    <p class="mb-0">There are no tasks with this type</p>
+                  {% endif %}
+                  <br>
+                  <a class="btn-outline-success mt-4 py-2 pe-4"
+                     href="{% url 'task_manager:task-type-update' pk=task_type.id %}"
+                  ><i class="fas fa-pen me-1"></i>Edit</a>
+                  <a class="btn-outline-danger mt-4 py-2 pe-4"
+                     href="{% url 'task_manager:task-type-delete' pk=task_type.id %}"
+                  ><i class="fas fa-trash me-1"></i>Delete</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>There are no task types yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
 {% endblock %}
