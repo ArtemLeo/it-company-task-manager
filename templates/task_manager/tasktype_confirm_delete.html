@@ -1,11 +1,28 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
 
+{% block title %} Delete task type {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% load crispy_forms_filters %}
 {% block content %}
-  <p>Are you sure tou want to delete the task type: {{ task_type }}?</p>
-  <p><i>All Tasks of this task type will be deleted!</i></p>
-  <form action="" method="post">
-    {% csrf_token %}
-    <input type="submit" value="Yes, delete" class="btn btn-danger">
-    <a class="btn btn-primary" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
-  </form>
+  {% include "includes/navigation-light.html" %}
+  <section class="py-3">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 class="mt-12">Are you sure you want to delete the task type: {{ tasktype.name }}?</h3>
+          <p>All tasks with this type will be deleted!</p>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <form action="" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Yes, delete" class="btn bg-gradient-danger me-4">
+          <a class="btn bg-gradient-success ms-4" href="{{ request.META.HTTP_REFERER }}">Changed my mind</a>
+        </form>
+      </div>
+    </div>
+  </section>
 {% endblock %}
