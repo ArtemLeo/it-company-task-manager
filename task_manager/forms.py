@@ -46,7 +46,7 @@ class WorkerCreationForm(UserCreationForm):
 class WorkerUpdateForm(forms.ModelForm):
     class Meta:
         model = Worker
-        fields = "__all__"
+        fields = ["username", "first_name", "last_name", "email", "position"]
 
 
 class WorkerSearchForm(forms.Form):
