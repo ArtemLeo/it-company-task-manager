@@ -143,13 +143,13 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
 class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
     model = get_user_model()
     form_class = WorkerCreationForm
-    success_url = reverse_lazy("task_manager:worker-detail")
+    success_url = reverse_lazy("task_manager:worker-list")
 
 
 class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = get_user_model()
     form_class = WorkerUpdateForm
-    success_url = reverse_lazy("task_manager:worker-detail")
+    success_url = reverse_lazy("task_manager:worker-list")
 
 
 class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
