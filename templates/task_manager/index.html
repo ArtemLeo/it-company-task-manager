@@ -1,14 +1,120 @@
-{% extends "base.html" %}
+{% extends 'layouts/base-presentation.html' %}
+
+{% block title %} Task Manager {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} index-page {% endblock body_class %}
 
 {% block content %}
-  <h1>Manage Your Projects in One Place</h1>
-  <p>Plan and manage all your team's tasks in one flexible platform.</p>
-  <h2>Dynamic content</h2>
-  <p>The Task manager has the following record counts:</p>
-  <ul>
-    <li><strong>Workers:</strong> {{ num_workers }}</li>
-    <li><strong>Positions:</strong> {{ num_positions }}</li>
-    <li><strong>TaskTypes:</strong> {{ num_task_types }}</li>
-  </ul>
 
-{% endblock %}
+  <header class="header-2">
+    <div class="page-header section-height-70 relative"
+         style="background-image: url('{{ ASSETS_ROOT }}/img/background_home.jpg')">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 text-center mx-auto">
+            <h1 class="text-white pt-3 mt-n5">Manage Projects in One Place</h1>
+            <p class="lead text-white mt-3">
+              Plan and manage all your team's tasks in one flexible platform
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="position-absolute w-100 z-index-1 bottom-0">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+          </defs>
+          <g class="moving-waves">
+            <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40"/>
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)"/>
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)"/>
+            <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)"/>
+            <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)"/>
+            <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,0.95"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </header>
+  <section class="pt-3 pb-4" id="count-stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
+          <div class="row">
+            <div class="col-md-4 position-relative">
+              <div class="p-3 text-center">
+                <h1 class="text-gradient text-primary"><span id="state1" class="text-gradient text-primary"
+                                                             countTo="{{ num_workers }}"></span>+</h1>
+                <h5 class="mt-3">Workers:</h5>
+                <p class="text-sm">You can easily create and assign new workers</p>
+              </div>
+              <hr class="vertical dark">
+            </div>
+            <div class="col-md-4 position-relative">
+              <div class="p-3 text-center">
+                <h1 class="text-gradient text-primary"><span id="state2" class="text-gradient text-primary"
+                                                             countTo="{{ num_positions }}"></span>+</h1>
+                <h5 class="mt-3">Positions:</h5>
+                <p class="text-sm">Manage all workers positions in one place</p>
+              </div>
+              <hr class="vertical dark">
+            </div>
+            <div class="col-md-4">
+              <div class="p-3 text-center">
+                <h1 class="text-gradient text-primary"><span id="state3" class="text-gradient text-primary"
+                                                             countTo="{{ num_task_types }}"></span>+</h1>
+                <h5 class="mt-3">Task Types:</h5>
+                <p class="text-sm">Use current or create a new one in a second</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+  <script src="{{ ASSETS_ROOT }}/js/plugins/countup.min.js"></script>
+  <script src="{{ ASSETS_ROOT }}/js/plugins/choices.min.js"></script>
+  <script src="{{ ASSETS_ROOT }}/js/plugins/rellax.min.js"></script>
+  <script src="{{ ASSETS_ROOT }}/js/plugins/tilt.min.js"></script>
+  <script src="{{ ASSETS_ROOT }}/js/plugins/choices.min.js"></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+  <script src="{{ ASSETS_ROOT }}/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
+  <script type="text/javascript">
+      if (document.getElementById('state1')) {
+          const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+          if (!countUp.error) {
+              countUp.start();
+          } else {
+              console.error(countUp.error);
+          }
+      }
+      if (document.getElementById('state2')) {
+          const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+          if (!countUp1.error) {
+              countUp1.start();
+          } else {
+              console.error(countUp1.error);
+          }
+      }
+      if (document.getElementById('state3')) {
+          const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+          if (!countUp2.error) {
+              countUp2.start();
+          } else {
+              console.error(countUp2.error);
+          }
+          ;
+      }
+  </script>
+
+{% endblock javascripts %}
