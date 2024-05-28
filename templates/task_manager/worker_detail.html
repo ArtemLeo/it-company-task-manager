@@ -1,33 +1,74 @@
-{% extends "base.html" %}
+{% extends 'layouts/base.html' %}
+
+{% block title %} Task List {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-  <h1>
-    {{ worker.position.name }} {{ worker.get_full_name }}
-    <a href="{% url 'task_manager:worker-delete' pk=worker.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
+  {% include "includes/navigation-light.html" %}
+  <section class="py-3 min-height-600">
+    <div class="container w-75">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2 class="mb-3 mt-3">{{ worker.get_full_name }}</h2>
+        </div>
+        <div class="col-lg-6 mt-3 text-right">
+          <a href="{% url 'task_manager:worker-update' pk=worker.id %}" class="btn btn-outline-success">
+            <i class="fas fa-pen me-1"></i>Update info
+          </a>
+          <a href="{% url 'task_manager:worker-delete' pk=worker.id %}" class="btn btn-outline-danger">
+            <i class="fas fa-trash me-1"></i>Delete
+          </a>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <p><i class="fas fa-id-badge me-1"></i>Position: {{ worker.position.name }}</p>
+        <p><i class="fas fa-at me-1"></i>Email: {{ worker.email }}</p>
+        <h4 class="mt-3">Currently working on:</h4>
 
-    <a href="{% url 'task_manager:worker-update' pk=worker.id %}" class="btn btn-secondary link-to-page">
-      Update worker's info
-    </a>
-  </h1>
-
-  <p><strong>First name:</strong> {{ worker.first_name }}</p>
-  <p><strong>Last name:</strong> {{ worker.last_name }}</p>
-  <p><strong>Position:</strong> {{ worker.license_number }}</p>
-  <p><strong>Is staff:</strong> {{ worker.is_staff }}</p>
-
-  <div class="ml-3">
-    <h4>Currently working on:</h4>
-
-    {% for task in worker.tasks.all %}
-      {% if not task.is_completed %}
-        <hr>
-        <p><strong>Task:</strong> {{ task.name }}</p>
-        <p><strong>Priority:</strong> {{ task.priority }}</p>
-      {% endif %}
-    {% empty %}
-      <p>No tasks are assigned to this employee yet.</p>
-    {% endfor %}
-  </div>
+        {% for task in worker.tasks.all %}
+          {% if not task.is_completed %}
+            <div class="col-lg-4 col-sm-6 my-2">
+              <div class="card card-plain card-blog bg-gradient-faded-white">
+                <div class="card-body px-0 m-1 mx-3">
+                  <h5>
+                    <a href="{% url 'task_manager:task-detail' pk=task.id %}"
+                       class="text-dark font-weight-bold">{{ task.name }}</a>
+                  </h5>
+                  <p>
+                    {{ task.description|truncatewords:20 }}
+                  </p>
+                  {% if task.priority == "Urgent" %}
+                    <p><span class="badge btn-danger">Urgent</span></p>
+                  {% elif task.priority == "High-priority" %}
+                    <p><span class="badge btn-warning">High-priority</span></p>
+                  {% elif task.priority == "Medium-priority" %}
+                    <p><span class="badge btn-info">Medium-priority</span></p>
+                  {% elif task.priority == "Low-priority" %}
+                    <p><span class="badge btn-success">Low-priority</span></p>
+                  {% endif %}
+                  <p>
+                    <i class="fas fa-user-friends me-1"></i>Assignees:
+                    {% for worker in task.assignees.all %}
+                      <a href="{% url 'task_manager:worker-detail' pk=worker.id %}">
+                        {{ worker.get_full_name }}{% if not forloop.last %}, {% endif %}</a>
+                    {% endfor %}
+                  </p>
+                  <p>
+                    <i class="fas fa-calendar me-1"></i>Deadline: {{ task.deadline|date:"d M Y" }}
+                  </p>
+                  <a href="{% url 'task_manager:task-detail' pk=task.id %}" class="text-info icon-move-right">Details
+                    <i class="fas fa-arrow-right text-sm" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <p>No tasks are assigned to this employee yet.</p>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 {% endblock %}
