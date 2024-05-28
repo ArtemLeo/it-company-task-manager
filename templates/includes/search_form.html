@@ -1,8 +1,11 @@
 {% load crispy_forms_filters %}
 {% load static %}
-<form class="form-inline" action="" method="get">
-  {% csrf_token %}
-  {{ search_form|crispy }}
-  <button class="btn btn-secondary search-label-icon" type="submit" value="submit">🔎</button>
-</form>
-<br>
+<div class="input-group mt-3 ms-44">
+  <form class="form-inline-search" action="" method="get">
+    {% csrf_token %}
+    {{ search_form|crispy }}
+    <button class="btn btn-outline-dark ms-1" id="search-btn" type="submit" value="submit">
+      <i class="fa fa fa-search"></i>
+    </button>
+  </form>
+</div>
