@@ -7,7 +7,7 @@
           <h5 class="text-gradient text-primary font-weight-bolder">My Contact Information:</h5>
         </div>
         <div>
-          <ul class="d-flex flex-row ms-n0 nav">
+          <ul class="d-flex flex-row ms-n1 p-2 nav">
             <li class="nav-item">
               <a class="nav-link pe-3" href="https://www.linkedin.com/in/andriushchenkoartem/" target="_blank">
                 <i class="fab fa-linkedin-in fa-2x opacity-8"></i>
@@ -33,14 +33,14 @@
       <div class="col-md-2 col-sm-6 col-5 mb-4">
         <div>
           <h5 class="text-gradient text-primary font-weight-bolder">Tasks Info:</h5>
-          <ul class="flex-column ms-n3 nav">
+          <ul class="flex-column ms-n3 nav text-decoration-underline">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'task_manager:task-list' %}" target="_blank">
+              <a class="nav-link fw-bold" href="{% url 'task_manager:task-list' %}" target="_blank">
                 All tasks
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'task_manager:task-type-list' %}" target="_blank">
+              <a class="nav-link fw-bold" href="{% url 'task_manager:task-type-list' %}" target="_blank">
                 Task types
               </a>
             </li>
@@ -50,14 +50,14 @@
       <div class="col-md-2 col-sm-6 col-6 mb-4 me-auto">
         <div>
           <h5 class="text-gradient text-primary font-weight-bolder">Workers Info:</h5>
-          <ul class="flex-column ms-n3 nav">
+          <ul class="flex-column ms-n3 nav text-decoration-underline">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'task_manager:worker-list' %}" target="_blank">
+              <a class="nav-link fw-bold" href="{% url 'task_manager:worker-list' %}" target="_blank">
                 All workers
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'task_manager:position-list' %}" target="_blank">
+              <a class="nav-link fw-bold" href="{% url 'task_manager:position-list' %}" target="_blank">
                 Positions
               </a>
           </ul>
