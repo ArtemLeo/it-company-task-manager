@@ -6,17 +6,17 @@
 
 {% block content %}
   {% include "includes/navigation-light.html" %}
-  <section class="py-3 min-height-600">
+  <section class="py-7">
     <div class="container w-75">
       <div class="row">
         <div class="col-lg-6">
           <h2 class="mb-3 mt-3">{{ worker.get_full_name }}</h2>
         </div>
         <div class="col-lg-6 mt-3 text-right">
-          <a href="{% url 'task_manager:worker-update' pk=worker.id %}" class="btn btn-outline-success">
+          <a href="{% url 'task_manager:worker-update' pk=worker.id %}" class="fs-6 p-2 btn btn btn-outline-success link-to-page">
             <i class="fas fa-pen me-1"></i>Update info
           </a>
-          <a href="{% url 'task_manager:worker-delete' pk=worker.id %}" class="btn btn-outline-danger">
+          <a href="{% url 'task_manager:worker-delete' pk=worker.id %}" class="fs-6 p-2 btn btn btn-outline-danger link-to-page ms-3">
             <i class="fas fa-trash me-1"></i>Delete
           </a>
         </div>

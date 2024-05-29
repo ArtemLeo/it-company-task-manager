@@ -19,7 +19,7 @@
       <div class="row">
         <form action="" method="post">
           {% csrf_token %}
-          <input type="submit" value="Yes, delete" class="btn bg-gradient-danger me-4">
+          <input type="submit" value="Yes, delete" class="btn bg-gradient-danger me-0">
           <a class="btn bg-gradient-success ms-4" href="{{ request.META.HTTP_REFERER }}">Changed my mind</a>
         </form>
       </div>
