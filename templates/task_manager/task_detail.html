@@ -10,9 +10,9 @@
     <div class="container w-75">
       <div class="row">
         <div class="col-lg-9">
-          <h2 class="mb-3 mt-3">{{ task.name }}:</h2>
+          <h2 class="mb-4 mt-4">{{ task.name }}:</h2>
         </div>
-        <div class="col-lg-3 mt-3 text-right">
+        <div class="col-lg-3 mt-4 text-right">
           <a href="{% url 'task_manager:task-update' pk=task.id %}" class="btn bg-gradient-success me-3">
             <i class="fas fa-pen me-1"></i>Update
           </a>
@@ -32,14 +32,14 @@
           <p><span class="badge btn-success">Low-priority</span></p>
         {% endif %}
         <hr>
-        <div class="fw-bold p-3">
-          <h4><i class="text-info fas fa-clipboard me-2"></i>Description: "{{ task.description }}"</h4>
-          <h4><i class="text-info fas fa-hourglass-half me-2"></i>Deadline: "{{ task.deadline|date:"F j, Y" }}"</h4>
-          <h4><i class="text-info fas fa-user-friends me-2"></i>Assignees:</h4>
+        <div class="text-bolder p-3">
+          <h5><i class="text-success fas fa-clipboard me-2"></i>Description: "{{ task.description }}"</h5>
+          <h5><i class="text-danger fas fa-hourglass-half me-2"></i>Deadline: "{{ task.deadline|date:"F j, Y" }}"</h5>
+          <h5><i class="text-info fas fa-user-friends me-2"></i>Assignees:</h5>
         </div>
         {% for worker in task.assignees.all %}
-          <div class="col-lg-5 m-4">
-            <div class="card card-plain card-blog bg-gray-400 p-2">
+          <div class="col-lg-5 m-1">
+            <div class="card card-plain card-blog bg-gradient-faded-light p-2">
               <div class="card-body p-0 m-3 mx-5">
                 <a href="{% url 'task_manager:worker-detail' pk=worker.id %}"
                 ><h4 class="fw-bold font-weight-bolder"><i

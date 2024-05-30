@@ -6,37 +6,39 @@
 
 {% block content %}
   {% include "includes/navigation-light.html" %}
-  <section class="py-7">
+  <section class="py-7  min-height-600">
     <div class="container w-75">
       <div class="row">
         <div class="col-lg-6">
-          <h2 class="mb-3 mt-3">{{ worker.get_full_name }}</h2>
+          <h2 class="mb-4 mt-4">{{ worker.get_full_name }}</h2>
         </div>
         <div class="col-lg-6 mt-3 text-right">
-          <a href="{% url 'task_manager:worker-update' pk=worker.id %}" class="fs-6 p-2 btn btn btn-outline-success link-to-page">
-            <i class="fas fa-pen me-1"></i>Update info
+          <a href="{% url 'task_manager:worker-update' pk=worker.id %}" class="btn bg-gradient-success me-3">
+            <i class="fas fa-pen me-1"></i>Update
           </a>
-          <a href="{% url 'task_manager:worker-delete' pk=worker.id %}" class="fs-6 p-2 btn btn btn-outline-danger link-to-page ms-3">
+          <a href="{% url 'task_manager:worker-delete' pk=worker.id %}" class="btn bg-gradient-danger">
             <i class="fas fa-trash me-1"></i>Delete
           </a>
         </div>
       </div>
       <hr>
       <div class="row">
-        <p><i class="fas fa-id-badge me-1"></i>Position: {{ worker.position.name }}</p>
-        <p><i class="fas fa-at me-1"></i>Email: {{ worker.email }}</p>
-        <h4 class="mt-3">Currently working on:</h4>
+      <div class="text-black-100 p-3">
+        <h5><i class="text-info fas fa-id-badge me-1"></i>Position: {{ worker.position.name }}</h5>
+        <h5><i class="text-danger fas fa-at me-1"></i>Email: {{ worker.email }}</h5>
+      </div>
 
+        <h5 class="text-black-100 bg-gradient-faded-success-vertical rounded ms-2 p-1">📌 Currently working on:</h5>
         {% for task in worker.tasks.all %}
           {% if not task.is_completed %}
-            <div class="col-lg-4 col-sm-6 my-2">
-              <div class="card card-plain card-blog bg-gradient-faded-white">
+            <div class="col-lg-4 col-sm-6 my-2 p-2">
+              <div class="card card-plain card-blog bg-gradient-faded-light-vertical">
                 <div class="card-body px-0 m-1 mx-3">
                   <h5>
                     <a href="{% url 'task_manager:task-detail' pk=task.id %}"
-                       class="text-dark font-weight-bold">{{ task.name }}</a>
+                       class="text-black-100 font-weight-bold">{{ task.name }}</a>
                   </h5>
-                  <p>
+                  <p class="text-black-100 fw-lighter">
                     {{ task.description|truncatewords:20 }}
                   </p>
                   {% if task.priority == "Urgent" %}
@@ -48,17 +50,17 @@
                   {% elif task.priority == "Low-priority" %}
                     <p><span class="badge btn-success">Low-priority</span></p>
                   {% endif %}
-                  <p>
-                    <i class="fas fa-user-friends me-1"></i>Assignees:
+                  <h6>
+                    <i class="text-black-100 fas fa-user-friends me-1"></i>Assignees:
                     {% for worker in task.assignees.all %}
                       <a href="{% url 'task_manager:worker-detail' pk=worker.id %}">
                         {{ worker.get_full_name }}{% if not forloop.last %}, {% endif %}</a>
                     {% endfor %}
-                  </p>
-                  <p>
-                    <i class="fas fa-calendar me-1"></i>Deadline: {{ task.deadline|date:"d M Y" }}
-                  </p>
-                  <a href="{% url 'task_manager:task-detail' pk=task.id %}" class="text-info icon-move-right">Details
+                  </h6>
+                  <h6>
+                    <i class="text-black-100 fas fa-calendar me-2"></i>Deadline: {{ task.deadline|date:"d M Y" }}
+                  </h6>
+                  <a href="{% url 'task_manager:task-detail' pk=task.id %}" class="text-bolder fs-5 text-primary icon-move-right px-0 py-1">Details
                     <i class="fas fa-arrow-right text-sm" aria-hidden="true"></i>
                   </a>
                 </div>

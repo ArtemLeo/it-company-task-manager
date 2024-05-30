@@ -22,12 +22,12 @@
 
       <div class="row">
         {% if worker_list %}
-          <table class="table table-hover align-content-center">
+          <table class="table table-bordered align-content-center text-primary text-bold">
             <tr>
-              <th>Full name</th>
-              <th>Position</th>
-              <th>Username</th>
-              <th>Email</th>
+              <th class="text-decoration-underline">FULL NAME:</th>
+              <th class="text-decoration-underline">POSITION:</th>
+              <th class="text-decoration-underline">USERNAME:</th>
+              <th class="text-decoration-underline">EMAIL:</th>
             </tr>
             {% for worker in worker_list %}
               <tr>
