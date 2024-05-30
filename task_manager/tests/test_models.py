@@ -52,8 +52,8 @@ class WorkerTests(TestCase):
     def test_worker_str(self):
         self.assertEqual(
             str(self.worker),
-            (f"{self.worker.position.name} "
-             f"({self.worker.first_name} {self.worker.last_name})")
+            (f"{self.worker.first_name} {self.worker.last_name} "
+             f"({self.worker.position.name})")
         )
 
 
