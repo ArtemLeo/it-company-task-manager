@@ -10,7 +10,9 @@ from task_manager.forms import (
     WorkerCreationForm,
     WorkerUpdateForm,
     TaskTypeSearchForm,
-    PositionSearchForm, WorkerSearchForm, TaskSearchForm
+    PositionSearchForm,
+    WorkerSearchForm,
+    TaskSearchForm
 )
 from task_manager.models import TaskType, Position, Task
 
