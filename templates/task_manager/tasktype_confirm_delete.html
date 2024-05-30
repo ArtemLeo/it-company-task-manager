@@ -11,15 +11,15 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-lg-12">
-          <h3 class="mt-12">Are you sure you want to delete the task type: {{ tasktype.name }}?</h3>
-          <p>All tasks with this type will be deleted!</p>
+          <h3 class="mt-12">Are you sure you want to delete the task type: "{{ tasktype.name }}"?</h3>
+          <h6>All tasks with this type will be deleted!</h6>
         </div>
       </div>
       <br>
       <div class="row">
         <form action="" method="post">
           {% csrf_token %}
-          <input type="submit" value="Yes, delete" class="btn bg-gradient-danger me-4">
+          <input type="submit" value="Yes, delete" class="btn bg-gradient-danger me-0">
           <a class="btn bg-gradient-success ms-4" href="{{ request.META.HTTP_REFERER }}">Changed my mind</a>
         </form>
       </div>
