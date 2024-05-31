@@ -1,0 +1,55 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Task List {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  {% include "includes/navigation-light.html" %}
+  <section class="py-7 min-height-600">
+    <div class="container w-75">
+      <div class="row">
+        <div class="col-lg-9">
+          <h2 class="mb-4 mt-4">{{ task.name }}:</h2>
+        </div>
+        <div class="col-lg-3 mt-4 text-right">
+          <a href="{% url 'task_manager:task-update' pk=task.id %}" class="btn bg-gradient-success me-3">
+            <i class="fas fa-pen me-1"></i>Update
+          </a>
+          <a href="{% url 'task_manager:task-delete' pk=task.id %}" class="btn bg-gradient-danger">
+            <i class="fas fa-trash me-1"></i>Delete
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        {% if task.priority == "Urgent" %}
+          <p><span class="badge btn-danger">Urgent</span></p>
+        {% elif task.priority == "High-priority" %}
+          <p><span class="badge btn-warning">High-priority</span></p>
+        {% elif task.priority == "Medium-priority" %}
+          <p><span class="badge btn-info">Medium-priority</span></p>
+        {% elif task.priority == "Low-priority" %}
+          <p><span class="badge btn-success">Low-priority</span></p>
+        {% endif %}
+        <hr>
+        <div class="text-bolder p-3">
+          <h5><i class="text-success fas fa-clipboard me-2"></i>Description: "{{ task.description }}"</h5>
+          <h5><i class="text-danger fas fa-hourglass-half me-2"></i>Deadline: "{{ task.deadline|date:"F j, Y" }}"</h5>
+          <h5><i class="text-info fas fa-user-friends me-2"></i>Assignees:</h5>
+        </div>
+        {% for worker in task.assignees.all %}
+          <div class="col-lg-5 m-1">
+            <div class="card card-plain card-blog bg-gradient-faded-light p-2">
+              <div class="card-body p-0 m-3 mx-5">
+                <a href="{% url 'task_manager:worker-detail' pk=worker.id %}"
+                ><h4 class="fw-bold font-weight-bolder"><i
+                    class="fas fa-user-circle me-2"></i>{{ worker.first_name }} {{ worker.last_name }}</h4></a>
+                <h6><i class="me-1"></i>Position: <b>{{ worker.position.name }}</b></h6>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

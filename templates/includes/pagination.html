@@ -1,0 +1,42 @@
+{% load query_transform %}
+{% if is_paginated %}
+  <div class="row text-center py-2">
+    <div class="col-auto mx-auto">
+      <ul class="pagination pagination-primary">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link"
+               href="?{% query_transform request page=page_obj.previous_page_number %}"
+               aria-label="Previous">
+              <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+            </a>
+          </li>
+        {% endif %}
+        {% for page_num in page_obj.paginator.page_range %}
+          {% if page_obj.number == page_num %}
+            <li class="page-item active">
+              <span class="page-link">{{ page_obj.number }}</span>
+            </li>
+          {% else %}
+            <li class="page-item">
+              <a class="page-link"
+                 href="?{% query_transform request page=page_num %}"
+                 aria-label="Previous">
+                <span>{{ page_num }}</span>
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link"
+               href="?{% query_transform request page=page_obj.next_page_number %}"
+               aria-label="Next">
+              <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+{% endif %}

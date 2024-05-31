@@ -1,0 +1,68 @@
+<footer class="footer bottom-0 width-100 pt-3 mt-auto ">
+  <hr class="horizontal dark mb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 mb-4 ms-auto ">
+        <div>
+          <h5 class="text-gradient text-primary font-weight-bolder">My Contact Information:</h5>
+        </div>
+        <div>
+          <ul class="d-flex flex-row ms-n1 p-2 nav">
+            <li class="nav-item">
+              <a class="nav-link pe-3" href="https://www.linkedin.com/in/andriushchenkoartem/" target="_blank">
+                <i class="fab fa-linkedin-in fa-2x opacity-8"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pe-3" href="https://github.com/ArtemLeo" target="_blank">
+                <i class="fab fa-github fa-2x opacity-8"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pe-3" href="https://www.instagram.com/artem_leo_andriushchenko/" target="_blank">
+                <i class="fab fa-instagram fa-2x opacity-8"></i>
+              </a>
+            <li class="nav-item">
+              <a class="nav-link pe-3" href="https://t.me/link_by_Artem" target="_blank">
+                <i class="fab fa-telegram fa-2x opacity-8"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-6 col-5 mb-4">
+        <div>
+          <h5 class="text-gradient text-primary font-weight-bolder">Tasks Info:</h5>
+          <ul class="flex-column ms-n3 nav ">
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="{% url 'task_manager:task-list' %}" target="_blank">
+                🔴 All tasks
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="{% url 'task_manager:task-type-list' %}" target="_blank">
+                ️🔴 Task types
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-6 col-6 mb-4 me-auto">
+        <div>
+          <h5 class="text-gradient text-primary font-weight-bolder">Workers Info:</h5>
+          <ul class="flex-column ms-n3 nav">
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="{% url 'task_manager:worker-list' %}" target="_blank">
+                🟠 All workers
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="{% url 'task_manager:position-list' %}" target="_blank">
+                🟠 Positions
+              </a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

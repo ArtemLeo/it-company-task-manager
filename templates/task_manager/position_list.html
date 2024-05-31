@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Task List {% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  {% include "includes/navigation-light.html" %}
+  <section class="py-7">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h3>Positions:
+            <a href="{% url 'task_manager:position-create' %}"
+               class="fs-6 p-2 btn btn-outline-success link-to-page ms-3 mt-3">Create position</a>
+          </h3>
+        </div>
+        <div class="col-3">
+          {% include "includes/search_form.html" %}
+        </div>
+      </div>
+      <div class="row">
+        {% if position_list %}
+          {% for position in position_list %}
+            <div class="col-lg-3 col-sm-6 my-2">
+              <div class="card card-plain card-blog bg-gradient-faded-white">
+                <div class="card-body px-0 m-1 mx-3">
+                  <h5 class="text-dark font-weight-bold">
+                    {{ position.name }}
+                  </h5>
+                  {% if position.workers.all %}
+                    <p class="mb-0"><i class="fas fa-user-friends me-1"></i>Work in this position:</p>
+                    {% for worker in position.workers.all %}
+                      <a class="py-2" href="{% url 'task_manager:worker-detail' pk=worker.id %}">
+                        <u>{{ worker.get_full_name }}</u>{% if not forloop.last %}, {% endif %}</a>
+                    {% endfor %}
+                  {% else %}
+                    <p>No one works in this position yet</p>
+                  {% endif %}
+                  <br>
+                  <br>
+                  <a class="btn-outline-success mt-4 py-2 pe-4"
+                     href="{% url 'task_manager:position-update' pk=position.id %}"
+                  ><i class="fas fa-pen me-1"></i>Update</a>
+                  <a class="btn-outline-danger mt-4 py-2 pe-4"
+                     href="{% url 'task_manager:position-delete' pk=position.id %}"
+                  ><i class="fas fa-trash me-1"></i>Delete</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>There are no positions yet</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

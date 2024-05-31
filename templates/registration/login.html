@@ -1,0 +1,69 @@
+{% extends 'layouts/base-fullscreen.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %}Sign in{% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} sign-in-illustration {% endblock body_class %}
+{% block content %}
+
+  <section>
+    <div class="page-header section-height-100">
+      <div class="container d-flex justify-content-start align-items-center">
+        <div class="col-xl-4 col-lg-5 col-md-7">
+          <div class="card card-plain border p-4 text-center mx-auto bg-gradient-faded-success-vertical">
+            <div class="card-header">
+                <h3 class="fw-bold text-decoration-underline mx-auto">Sign In:</h3>
+                <p class="mb-0">
+                  {% if next %}
+                    Please log in to continue
+                  {% endif %}
+                  {% if form.errors %}
+                    Your username and password didn't match
+                  {% endif %}
+                </p>
+              </div>
+
+              <div class="card-body">
+                <form method="post" action="{% url 'login' %}">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    {{ form.username|as_crispy_field }}
+                  </div>
+                  <div class="mb-3">
+                    {{ form.password|as_crispy_field }}
+                  </div>
+                  <div class="text-center">
+                    <input type="submit" value="Login" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0"/>
+                    <input type="hidden" name="next" value="{{ next }}"/>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+       <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
+          <div class="position-relative bg-gradient-faded-dark lgn-img h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
+            <h4 class="text-black-100 shadow-none bg-light rounded p-2">
+              Task Manager
+            </h4>
+            <p class="text-white font-monospace">
+              Are you ready to get started? Let's go!
+            </p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+{% endblock %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+  <script src="{{ ASSETS_ROOT }}/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
+
+{% endblock javascripts %}
