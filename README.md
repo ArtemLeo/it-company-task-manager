@@ -4,7 +4,7 @@
 
 ## Check this out!
 
-Link by Task Manager project deployed to Render will by here
+[Task Manager project deployed to Render](https://it-company-task-manager-project.onrender.com)
 
 You can use the following user to log in:
 
