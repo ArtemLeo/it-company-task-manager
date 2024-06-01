@@ -29,7 +29,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ["localhost", "https://it-company-task-manager-pwni.onrender.com"]
+ALLOWED_HOSTS = ["localhost", "it-company-task-manager-pwni.onrender.com"]
 
 INTERNAL_IPS = [
     "127.0.0.1",
