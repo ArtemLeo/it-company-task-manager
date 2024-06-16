@@ -1,12 +1,11 @@
 <h1>Task manager for IT company 📆📊📈</h1>
 
-<h3>▪️ This project is a task management system for an IT company.</h3>
-<h3>▪️ It is implemented using the Django framework and provides the ability to create, edit, delete, and view tasks, as well as manage users and their access rights.</h3>
+<h3>This project is a task management system for an IT company. It is implemented using the Django framework and provides the ability to create, edit, delete, and view tasks, as well as manage users and their access rights.</h3>
 
 ### Home Page (Image):
 ![image](images/home_page.png)
 
-### ▪️ I used the free server, [render.com](https://render.com/), so it took some time to upload my project:
+### I used the free server, [render.com](https://render.com/), so it took some time to upload my project:
 ### 🔰 [Task Manager project deployed to Render](https://it-company-task-manager-pwni.onrender.com) 🔰
 ## You can use the following user to log in:
 
