@@ -3,6 +3,7 @@
 <h3>▪️ This project is a task management system for an IT company.</h3>
 <h3>▪️ It is implemented using the Django framework and provides the ability to create, edit, delete, and view tasks, as well as manage users and their access rights.</h3>
 
+### Home Page (Image):
 ![image](images/home_page.png)
 
 ### ▪️ I used the free server, [render.com](https://render.com/), so it took some time to upload my project:
@@ -64,7 +65,8 @@ git clone https://github.com/ArtemLeo/it-company-task-manager.git
 - **Bootstrap4 (crispy_forms)**: for styling forms.
 - **WhiteNoise:** for processing static files.
 - **Git:** for version control.
-- 
+
+
 ### All Positions (Image):
 ![image](images/positions.png)
 
