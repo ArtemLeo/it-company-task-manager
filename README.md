@@ -2,7 +2,7 @@
 
 <h3>This project is a task management system for an IT company. It is implemented using the Django framework and provides the ability to create, edit, delete, and view tasks, as well as manage users and their access rights.</h3>
 
-### Home Page (Image):
+### 🏞 Home Page:
 ![image](images/home_page.png)
 
 ### I used the free server, [render.com](https://render.com/), so it took some time to upload my project:
@@ -13,7 +13,7 @@
 login: admin.user
 password: 1qazcde3
 ```
-### DB Structure (Image):
+### 🏞 DB Structure:
 ![image](images/db_structure.png)
 
 ## Stages of Project Creation:
@@ -31,21 +31,22 @@ password: 1qazcde3
     <li>Testing</li>
 </ul>
 
-### Task List (Image):
+### 🏞 Task List:
 ![image](images/task_list.png)
 
 ## Installation:
 <ul>
     <li>You can clone the project to your computer and familiarize yourself with its structure to create something similar.</li>
     <li>However, since the SECRET_KEY, DATABASE_URL, and DEBUG parameters are absent in the final version of the project, it will not work locally.</li>
-    <li>Run the following code in the terminal:</li>
 </ul>
+
+<p>Run the following code in the terminal:</p>
 
 ```
 git clone https://github.com/ArtemLeo/it-company-task-manager.git
 ```
 
-### Random Worker (Image):
+### 🏞 Random Worker:
 ![image](images/worker.png)
 
 ## Project Features:
@@ -54,7 +55,7 @@ git clone https://github.com/ArtemLeo/it-company-task-manager.git
 - **Workers Management:** Users can search for other workers by username and view details of the workers and the tasks they are assigned.
 - **Home Page:** Users can view the number of workers, positions, and task types currently created at their company on the application's main page.
 
-### Log In (Image):
+### 🏞 Log In:
 ![image](images/log_in.png)
 
 ## Technologies Used:
@@ -66,8 +67,8 @@ git clone https://github.com/ArtemLeo/it-company-task-manager.git
 - **Git:** for version control.
 
 
-### All Positions (Image):
+### 🏞 All Positions:
 ![image](images/positions.png)
 
-### All Workers (Image):
+### 🏞 All Workers:
 ![image](images/workers.png)
