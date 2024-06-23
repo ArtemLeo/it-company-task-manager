@@ -10,7 +10,7 @@
 ### 🏞 Home Page:
 ![image](images/home_page.png)
 
-### 🔰 I used the free server, [render.com](https://render.com/), so it took some time to upload my project:🔰
+### 🌎 I used the free server, [render.com](https://render.com/), so it took some time to upload my project:
 ### 🔰 [Task Manager project deployed to Render](https://it-company-task-manager-pwni.onrender.com) 🔰
 ### You can use the following user to log in:
 
