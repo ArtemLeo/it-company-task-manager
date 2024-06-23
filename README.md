@@ -73,16 +73,14 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### 🏞 Log In:
-![image](images/log_in.png)
-
-
 ## Project Features:
 - **User Authentication:** The application allows users to create new accounts, log in, and log out.
 - **Task Management:** Users can create, view, update, and delete tasks and task types. Additionally, there is a search function to look up tasks by name.
 - **Workers Management:** Users can search for other workers by username and view details of the workers and the tasks they are assigned.
 - **Home Page:** Users can view the number of workers, positions, and task types currently created at their company on the application's main page.
 
+### 🏞 Log In:
+![image](images/log_in.png)
 
 ### 🏞 All Positions:
 ![image](images/positions.png)
