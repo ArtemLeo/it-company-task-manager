@@ -82,14 +82,14 @@ python manage.py runserver
 ### 🏞 Log In:
 ![image](images/log_in.png)
 
-### 🏞 All Positions:
-![image](images/positions.png)
+### 🏞 All Workers:
+![image](images/workers.png)
 
 ### 🏞 Random Worker:
 ![image](images/worker.png)
 
-### 🏞 All Workers:
-![image](images/workers.png)
+### 🏞 All Positions:
+![image](images/positions.png)
 
 ## Technologies Used:
 - **Django:** for the development of the web framework.
