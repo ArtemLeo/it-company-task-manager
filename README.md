@@ -19,9 +19,6 @@ login: admin.user
 password: 1qazcde3
 ```
 
-### 🏞 DB Structure:
-![image](images/db_structure.png)
-
 ## Stages of Project Creation:
 <ul>
     <li><strong>Project initialization.</strong></li>
@@ -36,6 +33,9 @@ password: 1qazcde3
     <li><strong>Optimization and customization.</strong></li>
     <li><strong>Testing.</strong></li>
 </ul>
+
+### 🏞 DB Structure:
+![image](images/db_structure.png)
 
 ### 🏞 Task List:
 ![image](images/task_list.png)
