@@ -8,12 +8,11 @@
 </ul>
 
 ### 🏞 Home Page:
-### I used the free server, [render.com](https://render.com/), so it took some time to upload my project:
 ![image](images/home_page.png)
 
-
+### 🔰 I used the free server, [render.com](https://render.com/), so it took some time to upload my project:🔰
 ### 🔰 [Task Manager project deployed to Render](https://it-company-task-manager-pwni.onrender.com) 🔰
-## You can use the following user to log in:
+### You can use the following user to log in:
 
 ```
 login: admin.user
@@ -73,8 +72,9 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### 🏞 Random Worker:
-![image](images/worker.png)
+### 🏞 Log In:
+![image](images/log_in.png)
+
 
 ## Project Features:
 - **User Authentication:** The application allows users to create new accounts, log in, and log out.
@@ -82,8 +82,15 @@ python manage.py runserver
 - **Workers Management:** Users can search for other workers by username and view details of the workers and the tasks they are assigned.
 - **Home Page:** Users can view the number of workers, positions, and task types currently created at their company on the application's main page.
 
-### 🏞 Log In:
-![image](images/log_in.png)
+
+### 🏞 All Positions:
+![image](images/positions.png)
+
+### 🏞 Random Worker:
+![image](images/worker.png)
+
+### 🏞 All Workers:
+![image](images/workers.png)
 
 ## Technologies Used:
 - **Django:** for the development of the web framework.
@@ -92,10 +99,3 @@ python manage.py runserver
 - **Bootstrap4 (crispy_forms)**: for styling forms.
 - **WhiteNoise:** for processing static files.
 - **Git:** for version control.
-
-
-### 🏞 All Positions:
-![image](images/positions.png)
-
-### 🏞 All Workers:
-![image](images/workers.png)
