@@ -15,8 +15,8 @@
 
 ```
 You can use the following user to log in:
-🔘 login: admin.user
-🔘 password: 1qazcde3
+▪️ login: admin.user
+▪️ password: 1qazcde3
 ```
 
 ### 🏞 DB Structure:
