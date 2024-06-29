@@ -51,7 +51,7 @@ password: 1qazcde3
 
 
 ```shell
-git clone https://github.com/ArtemLeo/library-service-api.git
+git clone https://github.com/ArtemLeo/it-company-task-manager.git
 
 (for Windows)
 python -m venv venv
